@@ -1,10 +1,9 @@
 import {
-  createRootRoute,
-  Outlet,
-  ScrollRestoration,
-  Scripts,
+    createRootRoute,
+    HeadContent,
+    Outlet,
+    Scripts,
 } from "@tanstack/react-router";
-import { Meta } from "@tanstack/react-start";
 import { ReactNode } from "react";
 
 export const Route = createRootRoute({
@@ -37,11 +36,10 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html>
       <head>
-        <Meta />
+        <HeadContent />
       </head>
       <body>
         {children}
-        <ScrollRestoration />
         <Scripts />
       </body>
     </html>

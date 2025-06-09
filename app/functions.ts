@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import * as fs from "node:fs";
 import * as v from "valibot";
+import { userRequiredMiddleware } from "./services/auth.api";
 
 const filePath = "count.txt";
 
@@ -23,6 +24,7 @@ export const getCount = createServerFn({ method: "GET" }).handler(() => {
 });
 
 export const updateCount = createServerFn({ method: "POST" })
+  .middleware([userRequiredMiddleware])
   .validator(valibotSchema)
   .handler(async ({ data }) => {
     const count = await readCount();
